@@ -7,7 +7,7 @@ mod settings;
 mod events;
 mod commands;
 
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
 
 use serenity::{
     client::{
@@ -39,11 +39,11 @@ impl TypeMapKey for ShardManagerContainer {
 pub struct SettingsContainer;
 
 impl TypeMapKey for SettingsContainer {
-    type Value = Arc<RwLock<Settings>>;
+    type Value = Arc<Settings>;
 }
 
 lazy_static! {
-    static ref SETTINGS : Arc<RwLock<Settings>> = Arc::from(RwLock::new(Settings::new().unwrap()));
+    static ref SETTINGS : Arc<Settings> = Arc::from(Settings::new().unwrap());
 }
 
 group!({
@@ -62,7 +62,7 @@ fn main() {
 
     simple_logger::init_with_level(log::Level::Info).unwrap();
 
-    let settings = &*SETTINGS.read().unwrap();
+    let settings = &*SETTINGS;
     let mut client = Client::new(&settings.discord.token, Handler).expect("Error creating the client!");
 
     {

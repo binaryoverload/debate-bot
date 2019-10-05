@@ -18,7 +18,7 @@ impl EventHandler for Handler {
                 return;
             },
         };
-        info!("Connected as {} with prefix: {:?}", ready.user.tag(), settings.read().unwrap().command.prefix);
+        info!("Connected as {} with prefix: {:?}", ready.user.tag(), settings.command.prefix);
     }
 
 }
