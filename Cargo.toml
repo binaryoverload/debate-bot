@@ -1,0 +1,17 @@
+[package]
+name = "debate_bot"
+version = "0.1.0"
+authors = ["William Oldham <wegg7250@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+config="0.9.3"
+serenity = "0.7.1"
+lazy_static = "1.4.0"
+serde_derive = "1.0.101"
+serde = "1.0.101"
+log = "0.4.8"
+simple_logger = "1.3.0"
+mongodb = "0.4.0"
