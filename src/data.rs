@@ -1,12 +1,17 @@
 use serde::{Serialize, Deserialize};
 
+use wither::Model;
+
 use std::collections::HashMap;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Model, Serialize, Deserialize, Debug)]
 struct Guild {
-    id: u64,
-    debates: Vec<Debate>,
-    slowmode: u64
+    #[serde(rename="_id", skip_serializing_if="Option::is_none")]
+    pub id: Option<mongodb::oid::ObjectId>,
+    #[model(index(index="dsc", unique="true"))]
+    pub guild_id: u64,
+    pub debates: Vec<Debate>,
+    pub slowmode: u64
 }
 
 impl Guild {
